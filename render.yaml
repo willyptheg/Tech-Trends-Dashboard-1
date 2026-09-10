@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tech-layoffs-dashboard
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn codefile:server --bind 0.0.0.0:$PORT
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: ALPHA_VANTAGE_API_KEY
+        sync: false
+      - key: AILAYOFF_API_KEY
+        sync: false
+      - key: AILAYOFF_BASE_URL
+        sync: false
